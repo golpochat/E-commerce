@@ -1,0 +1,9 @@
+<div class="row">
+    <h1 class="text-center">Editing Order</h1>
+    <%= render 'form', order: @order %>
+    
+    <div class="text-center" style="margin:25px auto;">
+        <%= link_to "Back", orders_path, class: 'btn btn-lg btn-primary' %>
+        <%= link_to "Show", @order, class: 'btn btn-lg btn-success' %>
+    </div>
+</div>

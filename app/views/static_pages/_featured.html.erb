@@ -1,0 +1,44 @@
+ <hr class="featurette-divider">
+  
+    <div class="row">
+      <h1 class="text-center">Featured Titles</h1>
+      <div class="marketing">
+        <!-- START THE FEATURETTES -->
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading" style="color:#009d00"> <%= @itemfeatured1.title %> <span class="text-muted"><%= @itemfeatured1.author %></span></h2>
+            <p class="lead text-justify" ><%= @itemfeatured1.description %></p>
+            <p><%= link_to "Details", @itemfeatured1, class: 'btn btn-lg btn-success' ,style: 'color: white;'%></p>
+          </div>
+          <div class="col-md-5">
+            <%= image_tag (@itemfeatured1.image_url), size: "300x300", class: "featurette-image img-responsive center-block" %>
+          </div>
+        </div>
+        
+        <hr class="featurette-divider">
+        
+        <div class="row featurette">
+          <div class="col-md-7 col-md-push-5">
+            <h2 class="featurette-heading" style="color:#009d00"><%= @itemfeatured2.title %> <span class="text-muted"><%= @itemfeatured2.author %></span></h2>
+            <p class="lead text-justify"><%= @itemfeatured2.description %></p>
+            <p><%= link_to "Details", @itemfeatured2, class: 'btn btn-lg btn-success' ,style: 'color: white;'%></p>
+          </div>
+          <div class="col-md-5 col-md-pull-7">
+            <%= image_tag (@itemfeatured2.image_url), size: "300x300", class: "featurette-image img-responsive center-block" %>
+          </div>
+        </div>
+        
+        <hr class="featurette-divider">
+        
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading" style="color:#009d00"> <%= @itemfeatured3.title %> <span class="text-muted"><%= @itemfeatured3.author %></span></h2>
+            <p class="lead text-justify"><%= @itemfeatured3.description %></p>
+            <p><%= link_to "Details", @itemfeatured3, class: 'btn btn-lg btn-success' ,style: 'color: white;'%></p>
+          </div>
+          <div class="col-md-5">
+            <%= image_tag (@itemfeatured3.image_url), size: "300x300", class: "featurette-image img-responsive center-block" %>
+          </div>
+        </div>
+      </div>
+    </div>

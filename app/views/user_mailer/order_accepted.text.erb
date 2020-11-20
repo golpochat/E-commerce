@@ -1,0 +1,30 @@
+Hi <%= @user.name %>,
+
+<p>Hi <%= @user.name %>,</p>
+
+
+Thanks for your order
+
+Address  <%= @user.email %>
+
+                    Order no # <%= @order.id %>
+                    Order Date # <%= @order.order_date %>
+                    Order Status # <%= @order.status %>
+
+                Title
+                Qty.
+                Price
+                Sub-total
+
+            <% @total = 0 %>
+            <% @order.orderitems.each do |id,quantity| %>
+                    <% item = @order.orderitems.find_by_id(id) %>
+                    <%= item.title %>
+                    <%= item.quantity %>
+                    <%= number_to_currency(number_with_precision(item.price, :precision => 2), :unit => "€")%>
+                    <%= number_to_currency(number_with_precision(item.quantity * item.price, :precision => 2), :unit => "€") %>
+                    <% timx = (item.quantity * item.price)%>
+                    <% @total += timx %>
+            <% end %>
+
+Total # <%= number_to_currency(number_with_precision(@total, :precision => 2), :unit => "€") %>

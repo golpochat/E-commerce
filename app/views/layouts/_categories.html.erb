@@ -1,0 +1,4 @@
+<!-- Makes a dropdown which is filled with categories -->
+
+<%= select_tag :category_filter, options_for_select(@categories.collect {|p| [ p['title'], p['title'] ] }), :class => "btn btn-secondary dropdown-toggle", :id => "dropdownMenuButton",
+    type: "button", aria: { haspopup: true },aria: { expanded: false }, :style => "background: lightgrey;"%>	

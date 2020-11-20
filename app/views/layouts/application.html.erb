@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title><%= yield(:title) %> | The Reading Nook </title>
+    <%= render 'layouts/head' %>
+    <%= render 'layouts/shim' %>
+    <%= favicon_link_tag asset_path('favicon2.ico') %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <main>
+      <div class="container" style="margin:100px auto;">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% end %>
+        <%= yield %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    </main>
+    <footer class="footer">
+      <%= render 'layouts/footer' %>
+    </footer>
+  </body>
+</html>

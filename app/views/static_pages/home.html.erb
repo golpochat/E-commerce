@@ -1,0 +1,54 @@
+<% provide(:title, "Home") %>
+
+  <div class="row">
+    <h1 class="text-center">New Arrivals</h1>
+    <div class="col-md-12">
+      <!-- Carousel ================================================== -->
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% t = 0%>
+          <% @new_arrival.each do |item| %>
+            <% s = ""%>
+            <% if t == 0 %>
+              <% s = "active" %>
+            <%end%>
+            <li data-target="#myCarousel" data-slide-to="<%=t%>" class="<%=s%>"></li>
+            <% t+=1 %>
+          <%end%>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <% t = 1%>
+          <% @new_arrival.each do |item| %>
+            <% s = "item"%>
+            <% if t == 1 %>
+              <% s = "item active" %>
+            <%end%>
+            
+            <div class="<%=s%>">
+              <%= image_tag (item.image_url), size: "250x150" %>
+              <div class="container">
+                <div class="carousel-caption">
+                          <h1 class="text-justify"><%= item.title %></h1>
+                          <p class="item-description"><%= item.description %></p>
+                          <%= link_to "View details", item_path(item.id), class: 'btn btn-lg btn-success' ,style: 'color: white;'%>
+                        </div>
+              </div>
+            </div>
+            <% t = 0  %>
+          <%end%>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+      </div><!-- /.carousel -->
+    </div>    
+  </div>
+  <div class="col-md-12">
+   <%= render 'static_pages/featured'%>
+  </div>

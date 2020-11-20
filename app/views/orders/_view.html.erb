@@ -1,0 +1,57 @@
+    <div class="table-responsive">
+        <h1 class="text-center">Your order details.</h1>
+        <table class="table">
+            <thead>
+                <tr class="success">
+                    <th colspan="2">
+                        <h4>Name: <%= @user.name %></h4>
+                        <h5>Address: <%= @user.email %></h5>
+                    </th>
+                    <th colspan="2">
+                        <h5>Order no: <%= @order.id %></h5>
+                        <h5>Order Date: <%= @order.order_date %></h5>
+                        <h5>Order Status: <%= @order.status %></h5>
+                    </th>
+                </tr>
+                <tr class="success">
+                    <th>Title</th>
+                    <th>Qty.</th>
+                    <th>Price</th>
+                    <th class="text-right">Sub-total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @countItem = 0 %>
+                <% @total = 0 %>
+                <% @orderitems.each do |id,quantity| %>
+                    <tr>
+                        <% item = Orderitem.find_by_id(id) %>
+                        <td><%= item.title %></td>
+                        <td><%= item.quantity %></td>
+                        <td><%= number_to_currency(number_with_precision(item.price, :precision => 2), :unit => "€")%></td> 
+                        <td class="text-right"><%= number_to_currency(number_with_precision(item.quantity * item.price, :precision => 2), :unit => "€") %></td>
+                        <% timx = (item.quantity * item.price)%>
+                        <% @countItem += item.quantity %>
+                        <% @total += timx %>
+                     </tr>
+                <% end %>
+            </tbody>
+            <tfoot>
+                <tr class="success">
+                    <th colspan="1" style="text-align:right"> <h3>Total Qty.: <%= @countItem %></h3> </th>
+                    <th colspan="3" style="text-align:right"> <h3>Total: <%= number_to_currency(number_with_precision(@total, :precision => 2), :unit => "€") %></h3> </th>
+                </tr>
+            </tfoot>
+        </table>
+        <% if @order.status.eql? "Pending" %>
+            <h5 class="text-right"><%= render'orders/paypal_link' %></h5>
+        <%end%>
+        
+        <div class="text-center" style="margin:25px auto;">
+            <%= link_to "Back", orders_path, class: 'btn btn-lg btn-success',style: 'color: white;' %>
+            <% if @order.status.eql? "Pending" %>
+                <%= link_to "Edit", edit_order_path(@order), class: 'btn btn-lg btn-warning' ,style: 'color: white;'%>
+                <%= link_to "Delete", order_path(id: @order.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-lg btn-danger',style: 'color: white;' %>
+            <%end%>
+        </div>
+    </div>

@@ -1,0 +1,116 @@
+<div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="panel panel-default well">
+          <div class="panel-body">
+            <%= form_for(item, html: {class: "form-horizontal"}) do |f|%>
+              <% if item.errors.any? %>
+                <div id="error_explanation">
+                  <h4><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h4>
+                  <ul>
+                  <% item.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>         
+              <p class="text-center"><%= link_to "Add  Category", new_category_path, :class => "btn btn-lg btn-success" %></p>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.label :category %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-archive"></i> 
+                            </div>
+                            <% categories = Category.all.map { |category| [category.title] } %>
+                            <%= f.select :category,options_for_select(categories), prompt: 'Select a category', style: "height: 55px;", class: "form-control", placeholder: "Enter your category", autofocus: true %>
+                        </div> 
+                    </div>
+                </div>
+                
+                <div class="form-group">               
+                    <div class="col-sm-12">
+                        <%= f.label :title %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-header"></i>
+                            </div>
+                            <%= f.text_field :title,class: "form-control", placeholder: "Enter your title", autofocus: true %>
+                        </div>
+                    </div>                
+                </div>
+                
+                <div class="form-group">               
+                    <div class="col-sm-12">                                
+                        <%= f.label :author %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <%= f.text_field :author,class: "form-control", placeholder: "Enter your author name", autofocus: true %>
+                        </div>
+                    </div>                
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.label :description %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-comment fa-2"></i>
+                            </div>                  
+                            <%= f.text_area :description,class: "form-control", row: "5", placeholder: "Enter your description", autofocus: true %>
+                        </div>                                    
+                    </div>
+                </div>
+                
+                <div class="form-group">               
+                    <div class="col-sm-12">
+                        <%= f.label :price %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-euro"></i>
+
+                            </div>
+                            <%= f.text_field :price,class: "form-control", placeholder: "Enter your price", autofocus: true %>
+                        </div>
+                    </div>                
+               </div>
+               
+                <div class="form-group">               
+                    <div class="col-sm-12">
+                        <%= f.label :stock %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-list-ol"></i>
+                            </div>
+                            <%= f.text_field :stock,class: "form-control", placeholder: "Enter your opening stock", autofocus: true %>
+                        </div>
+                    </div>                
+               </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.label :image_url %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-image"></i>  
+                            </div>
+                            <%= f.text_field :image_url,class: "form-control", placeholder: "Enter your image", autofocus: true %>
+                        </div>                                    
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.submit "Add item", class: "btn btn-success btn-md" %>
+                    </div>
+                </div>
+            <%end%>
+          </div><!-- end panel-body -->
+        </div><!-- end panel -->
+      </div><!-- end col-md-8 -->
+      <!--<div class="col-md-2"></div>-->
+    </div>
+
+

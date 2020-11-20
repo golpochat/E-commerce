@@ -1,0 +1,46 @@
+<h1>The Reading Nook</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>
+Thanks for your order
+<table class="table">
+        <thead>
+            <tr class="active">
+                <td colspan="2">
+                    <h4>Name # <%= @user.name %></h4>
+                    <h5>Address # <%= @user.email %></h5>
+                </td>
+                <td colspan="2">
+                    <h5>Order no # <%= @order.id %></h5>
+                    <h5>Order Date # <%= @order.order_date %></h5>
+                    <h5>Order Status # <%= @order.status %></h5>
+                </td>
+            </tr>
+            <tr class="success">
+                <th>Title</th>
+                <th>Qty.</th>
+                <th>Price</th>
+                <th class="text-right">Sub-total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @total = 0 %>
+            <% @order.orderitems.each do |id,quantity| %>
+                <tr>
+                    <% item = @order.orderitems.find_by_id(id) %>
+                    <td><%= item.title %></td>
+                    <td><%= item.quantity %></td>
+                    <td><%= number_to_currency(number_with_precision(item.price, :precision => 2), :unit => "€")%></td> 
+                    <td class="text-right"><%= number_to_currency(number_with_precision(item.quantity * item.price, :precision => 2), :unit => "€") %></td>
+                    <% timx = (item.quantity * item.price)%>
+                    <% @total += timx %>
+                 </tr>
+            <% end %>
+        </tbody>
+        <tfoot>
+            <tr class="success">
+                <td colspan="5" style="text-align:right"> <h3>Total # <%= number_to_currency(number_with_precision(@total, :precision => 2), :unit => "€") %></h3> </td>
+            </tr>
+        </tfoot>
+    </table>

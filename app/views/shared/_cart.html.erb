@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+<div class="table-responsive">
+  <% if !@cart.empty? %>
+    <h1 class="text-center">Cart</h1>
+    <table class="table">
+      <% total = 0 %>
+      <% items = 0 %>
+      <thead>
+       <tr class="success">
+         <!-- Table Headers for Cart-->
+          <th>#</th>
+          <th>Title</th>
+          <th></th>
+          <th></th>
+          <th>Price</th>
+          <th>Qty.</th>
+          <th>Sub-total</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        
+          <% @cart.each do |id, quantity| %>
+            <tr class="active">
+              <!-- check if the item exists to avoid throwing an error and breaking the session cart -->
+              <% if Item.exists?(id)
+                  item = Item.find_by_id(id)%>
+                  <!-- if item !exist, nothing will happen to alter the cart -->
+
+              <td class="text-center"><%= link_to (image_tag item.image_url, :style =>"height:80px;"), item, :class=>"cart-remove-button" %></td>
+              <td><h3><%= link_to item.title, item %></h3></td>
+              <td> <a href="/cart/increase/<%= item.id %>"><h3 style="text-align:center;"><span class="glyphicon glyphicon-plus"></span></h3></a></td>
+              <td><a href="/cart/decrease/<%= item.id %>"><h3 style="text-align:center;"><span class="glyphicon glyphicon-minus"></span></h3></a></td>
+              <td><h3><%= number_to_currency(item.price, :unit =>"€") %></h3></td>
+              <td><h3><%= quantity %></h3></td>
+              <td><h3><%= number_to_currency(quantity * item.price, :unit =>"€") %></h3></td>
+              <td class="text-center"><h3><a href="/cart/remove/<%= item.id %>" class="btn btn-md btn-danger" style= "color: white;">Remove</a></h3></td>
+              <% items += quantity %> 
+              <% total += quantity * item.price %> 
+              <% end %>
+            </tr>
+            
+          <% end %>
+        <tfoot>
+          <tr class="success">
+            <th colspan="6"><h2 class="text-right">Grand Total (<%= items %> items): </h2></th>
+            <th colspan="2"><h2 class="text-left"><%= number_to_currency(total, :unit => "€") %></h2></th>
+          </tr>
+        </tfoot>
+      </tbody>
+    </table>
+    <% if !logged_in? %>
+    <p class="text-center">Please note you must <b>log in</b> below to checkout.</p>
+    <% end %>
+  <%end%>
+  
+   <!-- these design for checkout -->
+  <% if @cart.empty? %>
+    <div class="text-center">
+       <h1> Your cart is empty! </h1>
+       <h5><%= link_to "Vist the Catalogue", items_path, class: 'btn btn-lg btn-primary'%></h5>
+    </div>
+  <%else%>
+    <div class="text-center" style="margin:25px auto;" id="cartBtnGroup">
+      <%= link_to "Continue Shopping", items_path, class: 'btn btn-lg btn-primary'%>
+      
+      <!-- User must be logged in to check out -->
+      <% if logged_in? %>
+        <%= link_to "Checkout", checkout_path, class: 'btn btn-lg btn-success' %>
+      <% else %>
+        <%= link_to "Log In", login_path, class: 'btn btn-lg btn-success' %>
+      <% end %>
+      
+      <%= link_to "Empty Cart", clearcart_path, class: 'btn btn-lg btn-danger' %>
+    </div>
+  <%end%>
+  <!-- end of check link -->
+</div>
+</div>

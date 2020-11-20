@@ -1,0 +1,72 @@
+<% provide(:title, @user.name) %>
+<div class="row text-center">
+  <h1> Welcome, <%= @user.name %> <%= gravatar_for @user %></h1>
+          <% if @user.orders.last.present? %>
+<div class="table-responsive">
+<h1 class="text-center">Your last order details:</h1>	
+        <table class="table">	
+            <thead>	
+                <tr class="success">	
+                    <th colspan="2">	
+                        <h4>Name: <%= @user.name %></h4>	
+                        <h5>Email: <%= @user.email %></h5>	
+                    </th>	
+                    <th colspan="2">	
+                        <h5>Order No: <%= @user.orders.last.id %></h5>	
+                        <h5>Order Date: <%= @user.orders.last.order_date %></h5>	
+                        <h5>Order Status: <%= @user.orders.last.status %></h5>	
+                    </th>	
+                </tr>	
+                <tr class="success">	
+                    <th>Title</th>	
+                    <th>Qty.</th>	
+                    <th>Price</th>	
+                    <th class="text-right">Sub-total</th>	
+                </tr>	
+            </thead>	
+            <tbody>	
+                <% @countItem = 0 %>	
+                <% @total = 0 %>	
+                <% @user.orders.last.orderitems.each do |id,quantity| %>	
+                    <tr>	
+                        <% item = Orderitem.find_by_id(id) %>	
+                        <td><%= item.title %></td>	
+                        <td><%= item.quantity %></td>	
+                        <td><%= number_to_currency(number_with_precision(item.price, :precision => 2), :unit => "€")%></td> 	
+                        <td class="text-right"><%= number_to_currency(number_with_precision(item.quantity * item.price, :precision => 2), :unit => "€") %></td>	
+                        <% timx = (item.quantity * item.price)%>	
+                        <% @countItem += item.quantity %>	
+                        <% @total += timx %>	
+                     </tr>	
+                <% end %>	
+            </tbody>	
+            <tfoot>	
+                <tr class="success">	
+                    <th colspan="1" style="text-align:right"> <h3>Total Qty: <%= @countItem %></h3> </th>	
+                    <th colspan="3" style="text-align:right"> <h3>Total: <%= number_to_currency(number_with_precision(@total, :precision => 2), :unit => "€") %></h3> </th>	
+                </tr>	
+            </tfoot>	
+        </table>
+
+        <div class="text-center" style="margin:25px auto;">	
+            
+        </div>	
+    </div>
+ 
+
+
+<%else%>
+<h3 style="margin-bottom:5%">You do not have any orders to display yet!</h3>
+
+<%end%>
+ <div class="container-md profile-cont">
+    <h3 style="margin-bottom:3%">To update your profile, please click on the button below</h3>
+    <%= link_to "Update Profile", edit_user_path(current_user), class: 'btn btn-md btn-primary'%>
+  </div>
+  
+  <div class="container-md profile-cont">
+    <h3 style="margin-bottom:3%">To view your previous orders, please click on the button below</h3>
+    <%= link_to "My Orders", orders_path, class: 'btn btn-md btn-success' %>
+  </div>
+	</div>
+</div>

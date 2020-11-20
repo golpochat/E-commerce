@@ -1,0 +1,28 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#CategoryContainer {
+    width: 100%;
+    text-align: center;
+}
+
+
+.categoryhols {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.categorybutton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

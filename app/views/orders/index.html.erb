@@ -1,0 +1,49 @@
+<% provide(:title, "My Orders") %>
+<div class="row">
+  <div class="table-responsive">
+    <% if @orders.empty? %>
+      <h1 class="text-center">You don't have any order to display</h1>
+    <% else %>
+      <% if current_user.admin? %>
+        <h1 class="text-center">All Orders</h1>
+      <% else %>
+      <h1 class="text-center">My Orders</h1>
+      <% end %>
+      <table class="table">
+        <thead>
+          <tr class="success">
+            <th>Order date</th>
+            <th>Order Number</th>
+            <th>Customer Name</th>
+            <th>Order Status</th>
+            <th style="text-align:center;">Action</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @orders.each do |order| %>
+            <% @user = User.find(order.user_id).name %>
+            <tr>
+              <td><%= order.order_date %></td>
+              <td><%= order.id %></td>
+              <td><%= @user %></td>
+              <td><%= order.status %></td>
+              <td class="text-center">
+                  <%= link_to "Show", order, class: 'btn btn-md btn-success',style: 'color: white;' %>
+                  <% if order.status.eql? "Pending" %>
+                    <%= link_to "Edit", edit_order_path(order), class: 'btn btn-md btn-warning' ,style: 'color: white;'%>
+                    <%= link_to "Delete", order_path(id: order.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-md btn-danger',style: 'color: white;' %>
+                  <%end%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+  <div class="row text-center">
+    <div class="fpad">
+    <%= will_paginate @items %>
+    </div>
+  </div>
+</div>

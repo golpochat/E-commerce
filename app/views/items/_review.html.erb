@@ -1,0 +1,24 @@
+  <div class="container">
+    <h2>Review of <%= @item.title %></h2>
+    <br>
+    <p class="review"><%= review.body %></p> 
+    <p>Review by: <b><em><%= review.author_name %></em></b> on <%= review.user.created_at.to_date %></h4>
+  <p>
+    <% review.rating.to_i.times do  %>
+      <span class="glyphicon glyphicon-star" style="font-size:20px"></span>
+    <% end %>
+    <% (5 - review.rating).times do %>
+      <span class="glyphicon glyphicon-star-empty" style="font-size:20px"></span>
+      <% end %>
+  </p>
+  
+  
+  
+  <p> Posted <%= distance_of_time_in_words(review.created_at, Time.now) %> ago</p>
+  <% if logged_in? and (current_user.id == review.user_id || current_user.admin?) %>
+    <p>
+      <%= link_to 'Delete Review', [review.item, review], class: "btn btn-md btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <%end%>
+<br>
+</div>

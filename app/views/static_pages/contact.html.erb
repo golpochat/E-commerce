@@ -1,0 +1,234 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<% provide(:title, "Contact") %>
+
+<div class="container-sm">
+
+    <!--Section start-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+
+    <br>
+
+    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions?
+        Please do not hesitate to contact us directly.</p>
+
+    <br>
+<div class = "contact-main container-fluid">
+    <div class="row">
+
+
+        <div class="row h-100">
+            <form id="my-form" action="https://formspree.io/xnqbydle" method="POST">
+
+
+                <div class="row">
+
+
+                    <div class="col-sm-12 my-auto">
+                        <div class="md-form mb-0">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control vcheck" id="inputName"
+                                placeholder="Enter your name" required>
+
+                            <br>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-12 my-auto">
+                        <div class="md-form mb-0">
+                            <label for="email">Your Email</label>
+
+                            <input type="text" id="email" name="email" class="form-control vcheck" id="inputEmail1"
+                                placeholder="Enter your email" required>
+                        </div>
+                    </div>
+           
+
+                </div>
+
+ <br>
+
+                <div class="row">
+                    <div class="col-sm-12 my-auto">
+                        <div class="md-form mb-0">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control vcheck"
+                                placeholder="Subject of request" required>
+
+                            <br>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+
+                    <div class="col-sm-12 my-auto">
+
+                        <div class="md-form">
+                            <label for="message">Your message</label>
+
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"
+                                name="Comments" placeholder="Enter your message here" required></textarea>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="text-center text-md-left">
+                    <button id="my-form-button" type="submit" name="form[Submit]" class="btn btn-primary btn-lg"
+                        disabled title="Please fill the required fields first" disabled="disabled" data-toggle="modal" data-target="#myModal" style="margin-top:20px;">Contact
+                        us</button>
+                    <p id="my-form-status" style="margin-top:10px"></p>
+                </div>
+                <p id="my-form-status"></p>
+                
+                <br>
+            </form>
+          </div>
+        </div>
+
+
+
+
+        
+            <ul class="list-group list-group-horizontal text-center" style="max-width:300px; margin:auto">
+                <li class="list-group-item .flex-fill"><svg class="bi bi-book" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0115 2.82z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <p>Mayor Street Lower, IFSC, Dublin 1</p>
+                </li>
+
+                <br>
+
+                <li class="list-group-item .flex-fill"><i class="fa fa-phone" style="font-size:36px"></i>
+                    <p>+ 01 832 0987</p>
+                </li>
+
+                <br>
+
+                <li class="list-group-item .flex-fill"><svg class="bi bi-envelope" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M14 3H2a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM2 2a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H2z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M.071 4.243a.5.5 0 01.686-.172L8 8.417l7.243-4.346a.5.5 0 01.514.858L8 9.583.243 4.93a.5.5 0 01-.172-.686z"
+                            clip-rule="evenodd" />
+                        <path
+                            d="M6.752 8.932l.432-.252-.504-.864-.432.252.504.864zm-6 3.5l6-3.5-.504-.864-6 3.5.504.864zm8.496-3.5l-.432-.252.504-.864.432.252-.504.864zm6 3.5l-6-3.5.504-.864 6 3.5-.504.864z" />
+                    </svg>
+                    <p>info@theReadingNook.ie</p>
+                </li>
+            </ul>
+
+            <br>
+
+        </div>
+
+
+    
+</div>
+
+
+
+<!-- Start of Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-titler">We read you, loud and clear!</h4>
+            </div>
+            
+            <div class="modal-body">
+                <p>Thank you for contacting us - we will aim to respond to queries within 2 working days.</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-md" data-dismiss="modal">Close</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+
+        // get the form elements defined in your form HTML above
+
+        var form = document.getElementById("my-form");
+        var button = document.getElementById("my-form-button");
+        var status = document.getElementById("my-form-status");
+
+        // Success and Error functions for after the form is submitted
+
+        function success() {
+            form.reset();
+            button.style = "display: none ";
+            status.innerHTML = "Thanks for contacting us!";
+        }
+
+        function error() {
+            status.innerHTML = "Oops! There was a problem. Please try again.";
+        }
+
+        // handle the form submission event
+
+        form.addEventListener("submit", function (ev) {
+            ev.preventDefault();
+            var data = new FormData(form);
+            ajax(form.method, form.action, data, success, error);
+        });
+
+
+    });
+
+    // helper function for sending an AJAX request
+
+    function ajax(method, url, data, success, error) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return;
+            if (xhr.status === 200) {
+                success(xhr.response, xhr.responseType);
+            } else {
+                error(xhr.status, xhr.response, xhr.responseType);
+            }
+        };
+        xhr.send(data);
+    }
+    
+    //validation function - checks if the fields are filled before you can click the submit button
+    $('.vcheck').change(function () {
+        // We store the values of each input field in a variable
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var subject = $('#subject').val();
+
+        // We check for null (empty) values
+        if (name == '' || email == '' || subject == '') {
+            // When we find something blank set or keep the button to disabled
+            $('#my-form-button').attr('disabled', 'disabled');
+        } else {
+            // When all conditions are met and values are good we enable the button
+            $('#my-form-button').removeAttr('disabled');
+        }
+    });
+
+</script>

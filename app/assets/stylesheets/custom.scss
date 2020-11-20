@@ -1,0 +1,69 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap');
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+}
+
+/* navbar design*/
+
+.navbar {
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+/* end of navbar design */
+
+/* Brand name/logo design*/
+
+#logo {
+  float: left;
+  font-size: 2em;
+  color: white;
+  font-weight: bold;
+  &:hover {
+    color: #5cb85c;
+    text-decoration: none;
+  }
+}
+
+
+// its for putting a top/bottom margin between two divs
+.margin-top {
+  margin-top: 50px;
+}
+
+.margin-bottom {
+  margin-bottom: 50px;
+}
+
+/* end of Brand name/logo design*/
+
+h1,
+h2,
+h3,
+p,
+#logo {
+  font-family: 'Comfortaa', cursive;
+}
+
+.fpad {
+  margin-bottom: 20px;
+}
+
+.profile-cont {
+  margin-top: 25px;
+  border-top: 1px gray solid;
+}
+
+main {
+  min-height: calc(100vh - 160px);
+}
+
+.glyphicon-star:hover {
+  color: gold;
+}

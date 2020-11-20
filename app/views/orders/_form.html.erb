@@ -1,0 +1,50 @@
+<div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="panel panel-default well">
+          <div class="panel-body">
+            <%= form_for(order, html: {class: "form-horizontal"}) do |f|%>
+              <% if order.errors.any? %>
+                <div id="error_explanation">
+                  <h4><%= pluralize(order.errors.count, "error") %> prohibited this item from being saved:</h4>
+                  <ul>
+                  <% order.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>         
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.label :order_date %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-image"></i>  
+                            </div>
+                            <%= f.text_field :order_date, class: "form-control", placeholder: "Enter your image", autofocus: true %>
+                        </div>                                    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.label :status %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-archive"></i> 
+                            </div>
+                            <%= f.select :status,options_for_select(['Pending', 'Paid by Paypal','Cancelled']), prompt: 'Select a payment status',id: "orderStatus", class: "form-control", autofocus: true %>
+                        </div> 
+                </div>
+                </div>
+             
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.submit "Update", class: "btn btn-success btn-md" %>
+                    </div>
+                </div>
+            <%end%>
+          </div><!-- end panel-body -->
+        </div><!-- end panel -->
+      </div><!-- end col-md-8 -->
+      <!--<div class="col-md-2"></div>-->
+    </div>

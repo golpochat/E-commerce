@@ -1,0 +1,43 @@
+<div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="panel panel-default well">
+          <div class="panel-body">
+            <%= form_for(category, html: {class: "form-horizontal"}) do |f|%>
+              <% if category.errors.any? %>
+                <div id="error_explanation">
+                  <h4><%= pluralize(category.errors.count, "error") %> prohibited this item from being saved:</h4>
+                  <ul>
+                  <% category.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>            
+
+                <div class="form-group">               
+                    <div class="col-sm-12">
+                        <%= f.label :title %>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-header"></i>
+                            </div>
+                            <%= f.text_field :title,class: "form-control", placeholder: "Enter your title", autofocus: true %>
+                        </div>
+                    </div>                
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <%= f.submit "Add category", class: "btn btn-success btn-lg" %>
+                    </div>
+                </div>
+            <%end%>
+          </div><!-- end panel-body -->
+        </div><!-- end panel -->
+      </div><!-- end col-md-8 -->
+      <!--<div class="col-md-2"></div>-->
+    </div>
+
+
+

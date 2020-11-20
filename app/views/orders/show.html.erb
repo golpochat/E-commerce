@@ -1,0 +1,7 @@
+<% provide(:title, "Your Order Details") %>
+
+<% @user = User.find(current_user.id) %>
+<div class="row">
+    <%= render 'orders/view' %>
+</div>
+

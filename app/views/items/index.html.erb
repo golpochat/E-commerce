@@ -1,0 +1,16 @@
+<% provide(:title, "Items") %>	
+    
+<div class="row">
+    <% if !@filter.blank? %>
+    <h1 class="text-center"><%= @filter %></h1>	
+    <% else %>
+    <h1 class="text-center">Full Catalogue</h1>
+    <% end %>
+    <%= render 'items/catalogue'%>
+</div>
+
+<div class="row text-center">
+    <div class="fpad">
+    <%= will_paginate @items %>
+    </div>
+</div>

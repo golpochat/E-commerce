@@ -1,0 +1,96 @@
+.item-title{
+    color:#5cb85c;
+    font-size:20px;
+}
+
+h1{
+    padding-bottom:25px;
+}
+
+h1{
+    padding-bottom:25px;
+}
+.category-filter {
+        font-size: 16px;
+        text-align:center;
+}
+#dropdownMenuButton{
+    padding: 8px 0px;
+        
+}
+#item_category{
+    width: 100%;
+    height:35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.well {
+    background-color:white;
+}
+/* Meadia query*/
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .row{
+        margin: 0 85px;
+    }
+    .category-filter{
+        font-size: 16px;
+        margin-left: 20px;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199px){
+    .col-sm-4 {
+        width: 33.33%;
+        left: 50px;
+    }
+    .row{
+        margin: 0 5px;
+    }
+    .category-filter {
+        font-size: 16px;
+        margin-left: 65px;
+    }
+        #logo {
+        font-size: 32px;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991px){ 
+    .col-sm-4 {
+        width: 50%;
+        left: 50px;
+    }
+    .row{
+        margin: 0 40px;
+    }
+    .category-filter {
+        font-size: 16px;
+        margin-left: 65px;
+    }
+    #logo {
+        font-size: 22px;
+    }
+    .table-responsive > .table > thead > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > tfoot > tr > td {
+        white-space: nowrap;
+    }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 767px) {
+    .item-title {
+        text-align: center;
+    }
+    img{
+        width: 100%;
+        height: auto;
+    }
+    .row{
+        margin: 0 15%;
+    }
+}
+
+/* end of media query*/

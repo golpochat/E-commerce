@@ -1,0 +1,56 @@
+<% provide(:title, "Order Successful") %>
+
+<div class="row">
+    <div class="table-responsive">
+        <h1 class="text-center">Your Order Details:</h1>
+        <% @user = User.find(current_user.id) %>
+        <table class="table">
+            <thead>
+                <tr class="success">
+                    <th colspan="2">
+                        <h4>Name: <%= @user.name %></h4>
+                        <h5>Email: <%= @user.email %></h5>
+                    </th>
+                    <th colspan="2">
+                        <h5>Order No.: <%= @orders.id %></h5>
+                        <h5>Order Date: <%= @orders.order_date %></h5>
+                        <h5>Order Status: <%= @orders.status %></h5>
+                    </th>
+                </tr>
+                <tr class="success">
+                    <th>Title</th>
+                    <th>Qty.</th>
+                    <th>Price</th>
+                    <th class="text-right">Sub-total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @countItem = 0 %>
+                <% @total = 0 %>
+                <% @orderitems.each do |id,quantity| %>
+                    <tr>
+                        <% item = Orderitem.find_by_id(id) %>
+                        <td><%= item.title %></td>
+                        <td><%= item.quantity %></td>
+                        <td><%= number_to_currency(number_with_precision(item.price, :precision => 2), :unit => "€")%></td> 
+                        <td class="text-right"><%= number_to_currency(number_with_precision(item.quantity * item.price, :precision => 2), :unit => "€") %></td>
+                        <% timx = (item.quantity * item.price)%>
+                        <% @countItem += item.quantity %>
+                        <% @total += timx %>
+                     </tr>
+                <% end %>
+            </tbody>
+            <tfoot>
+                <tr class="success">
+                    <th colspan="1" style="text-align:right"> <h3>Total Qty. : <%= @countItem %></h3> </th>
+                    <th colspan="3" style="text-align:right"> <h3>Total: <%= number_to_currency(number_with_precision(@total, :precision => 2), :unit => "€") %></h3> </th>
+                </tr>
+            </tfoot>
+        </table>
+        <h4>Please proceed to payment to finalize your order:</h4>
+        <h5 class="text-center">
+            <%= render'orders/paypal_link' %>
+        </h5>
+    </div>
+</div>
+

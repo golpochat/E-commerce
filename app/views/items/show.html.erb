@@ -1,0 +1,90 @@
+<% provide(:title, @item.title) %>
+
+
+    <div class="col-md-12">
+        <h2 class="text-center", style="margin-bottom:5%"><%= @item.title %></h2>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <%= image_tag (@item.image_url), size: "350x550", class: "item-image" %>
+        </div>
+        <div class="col-md-6">
+            <h3>Author: <%= @item.author %></h3>
+            <h5><%= @item.description %></h5>
+            <h4>Price: <%= number_to_currency(@item.price, :unit => "€") %></h4>
+            <h4>Category: <%= @item.category %></h4>
+            <h4>
+                Rating:
+                <% @item.score.to_i.times do  %>
+                    <span class="glyphicon glyphicon-star"></span>
+                <% end %>
+                <% @item.blank_stars.times do %>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                <% end %> (<%= @item.reviews.size %>) 
+            </h4>
+        <!-- admin function -->
+            <% if logged_in? and current_user.admin? %>
+                <h4>Current Stock: <%= @item.stock %></h4>
+                <%= form_for @item, remote: true do |f| %>
+                    <h4>
+                        <%= f.label :stock %>
+                        <%= f.text_field :stock %>
+                    </h4>
+                    <h4><%= f.submit 'Update Stock' , :class => "btn btn-md btn-primary"%></h4>
+                <%end%>
+            <%end%>
+            <p>
+                <%= link_to 'Back to Catalogue',  items_path, :class => "btn btn-md btn-success", :role => "button" %>
+                <%if @item.stock_limit %>
+                    <%= link_to 'Out of stock', cart_add_path(@item.id), :class => "btn btn-md btn-danger disabled", :disabled => true %>
+                <% else %>
+                   <button class="btn btn-md btn-primary" type="button" data-toggle="modal" data-target="#myModal" onclick="confirmAdd('<%= @item.id%>')">Add to cart</button>
+                    <!-- end of admin function -->	
+                    <!-- Start of Modal -->	
+                    <!-- Start of Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Added to Cart</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>Item was added to your cart!</p>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-primary btn-md" data-dismiss="modal">Continue Shopping</button>
+                        <%= link_to 'Checkout', "/cart", :class => "btn btn-success btn-md" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>	
+            </p>
+            <!-- admin function -->
+            <% if logged_in? and current_user.admin? %>
+                 <p>
+                    <%= link_to 'Edit',  edit_item_path(@item), :class => "btn btn-md btn-warning", :role => "button" %>
+                    <%= link_to 'Delete',  @item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-md btn-danger", :role => "button" %>
+                 </p>
+            <%end%>
+            <!-- end of admin function -->
+        </div>
+    </div>
+    
+    <div class="col-md-12">	
+        <hr>	
+        <h4 class = "text-center">Reviews (<%= @item.reviews.size %>)</h4>	
+        <%= render partial: 'items/review', collection: @item.reviews %>	
+    </div>
+    <div class="col-md-12">
+        <% if logged_in? %>
+            <%= render partial: 'reviews/form' %>
+        <% else %>
+        <br>
+            <p class="text-center"> <b><a><%= link_to "Log in", login_path %></b></a> to review this book<p>
+        <% end %>
+    </div>
+    
+    
+    
