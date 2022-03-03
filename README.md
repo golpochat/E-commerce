@@ -1,1 +1,1 @@
-# Group E SSD Project
+# Server side development group Project
